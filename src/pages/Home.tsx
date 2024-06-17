@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <main className="pt-6">
@@ -15,25 +17,17 @@ export default function Home() {
         alt="포스텔러 만세력"
         className="with-full-width"
       />
-      <img
-        src="/images/pro_intro_2.webp"
-        alt="포스텔러 만세력"
-        className="with-full-width"
-      />
-      <img
-        src="/images/pro_intro_2.webp"
-        alt="포스텔러 만세력"
-        className="with-full-width"
-      />
-      <div className="bottom-0 left-0 right-0 p-5">
-        <button
-          className="bg-primary mx-auto block w-10/12 rounded-2xl py-4 text-lg font-bold"
+
+      <div className="sticky bottom-0 left-0 right-0 z-0 px-2 py-5">
+        <Link
+          className="bg-primary mx-auto block w-full rounded-2xl py-4 text-center text-lg font-bold"
           style={{
-            boxShadow: "10px 10px 15px",
+            boxShadow: "1px 1px 20px 2px",
           }}
+          to={"profile"}
         >
           시작하기
-        </button>
+        </Link>
       </div>
     </main>
   );

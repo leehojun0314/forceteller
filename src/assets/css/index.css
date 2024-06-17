@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
-
+#root {
+  background-color: rgb(252, 251, 249);
+}
 header input#menu-toggle,
 header label.menu-btn-container {
   cursor: pointer;

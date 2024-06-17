@@ -11,7 +11,7 @@ export default function Header() {
     setChecked((pre) => !pre);
   }, []);
   return (
-    <header className="sticky top-0 flex flex-row items-center justify-center bg-white p-4 text-center">
+    <header className="sticky top-0 flex flex-row items-center justify-center p-4 text-center">
       <h3 className="text-l flex-1 font-bold">포스텔러 만세력</h3>
       <input
         type="checkbox"
