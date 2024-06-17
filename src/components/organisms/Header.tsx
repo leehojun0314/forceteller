@@ -11,8 +11,8 @@ export default function Header() {
     setChecked((pre) => !pre);
   }, []);
   return (
-    <header className="sticky top-0 flex flex-row items-center justify-center p-4 text-center">
-      <h3 className="text-l flex-1 font-bold">포스텔러 만세력</h3>
+    <header className="bg-background sticky top-0 z-10 flex flex-row items-center justify-center p-4 text-center">
+      <h3 className="text-l flex-1 font-bold">만세력</h3>
       <input
         type="checkbox"
         className="hidden"
@@ -30,7 +30,7 @@ export default function Header() {
         <Link to="/" className="nav-link">
           저장한 만세력
         </Link>
-        <Link to="/" className="nav-link">
+        <Link to="/profile" className="nav-link">
           프로필 입력
         </Link>
         <Link to="/" className="nav-link">
