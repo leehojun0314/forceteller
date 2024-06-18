@@ -6,15 +6,12 @@ import InputForm from "@/components/molecules/InputForm";
 import SubmitButton from "@/components/atoms/SubmitButton";
 import { formatDate } from "@/utils/formatDate";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 export default function Confirm() {
   const location = useLocation();
   console.log("location: ", location);
-  if (!location.state) {
-    window.alert("Bad request");
-    window.location.href = "/";
-  }
+
   const {
     name,
     gender,
@@ -45,6 +42,12 @@ export default function Confirm() {
       state: null,
     });
   }, [navigate]);
+  useEffect(() => {
+    if (!location.state) {
+      window.alert("Bad request");
+      window.location.href = "/";
+    }
+  }, [location]);
   return (
     <Main additionalClasses="flex flex-col">
       <h1 className="text-2xl font-semibold leading-relaxed">

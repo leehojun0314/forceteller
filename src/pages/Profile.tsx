@@ -1,4 +1,4 @@
-import "@/assets/css/profile.module.css";
+import styles from "@/assets/css/profile.module.css";
 import ErrorText from "@/components/atoms/ErrorText";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -97,7 +97,7 @@ export default function Profile() {
   return (
     <Main>
       <form
-        className="flex h-full flex-col gap-6"
+        className={"flex h-full flex-col gap-6" + styles}
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
@@ -127,6 +127,7 @@ export default function Profile() {
             <label
               className={
                 "border-grey-300 relative z-0 box-border w-1/2 items-center justify-center rounded-md rounded-r-none border border-r-0 bg-white p-3 text-center hover:cursor-pointer"
+
                 //   (selectedGender === "male"
                 //     ? "text-black after:absolute after:h-12 after:w-full after:rounded-md after:border-2 after:border-black after:content-['']"
                 //     : "text-gray-500")
