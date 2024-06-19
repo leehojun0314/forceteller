@@ -6,7 +6,7 @@ export default function Main({
 }: React.PropsWithChildren<{ additionalClasses?: string }>) {
   return (
     <main
-      className={"p-5 " + additionalClasses}
+      className={additionalClasses}
       style={{
         height: "calc(100vh - 56px)",
       }}

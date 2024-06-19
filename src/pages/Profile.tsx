@@ -198,9 +198,7 @@ export default function Profile() {
                 flex: 4,
               }}
             />
-            {errors.birthDate && (
-              <ErrorText>{errors.birthDate.message}</ErrorText>
-            )}
+
             <input
               className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
               type="time"
@@ -236,6 +234,9 @@ export default function Profile() {
               <label htmlFor="night">야자시/조자시</label>
             </div>
           </div>
+          {errors.birthDate && (
+            <ErrorText>{errors.birthDate.message}</ErrorText>
+          )}
         </div>
         <div>
           <label>도시</label>
@@ -253,7 +254,11 @@ export default function Profile() {
           </div>
         </div>
         <div className="flex-grow"></div>
-        <SubmitButton value="만세력 보러가기" disabled={!isValid} />
+        <SubmitButton
+          value="만세력 보러가기"
+          disabled={!isValid}
+          additionalClasses="mb-4"
+        />
         <SubmitButton value="저장된 만세력 불러오기" />
         {/* <input
           type="submit"
