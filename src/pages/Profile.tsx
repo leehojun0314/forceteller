@@ -258,6 +258,9 @@ export default function Profile() {
           value="만세력 보러가기"
           disabled={!isValid}
           additionalClasses="mb-4"
+          handleClick={() => {
+            window.location.href = "/result";
+          }}
         />
         <SubmitButton value="저장된 만세력 불러오기" />
         {/* <input
