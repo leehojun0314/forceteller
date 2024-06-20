@@ -1,15 +1,20 @@
-import BirthDay from "@/components/atoms/Birthday";
+// import BirthDay from "@/components/atoms/Birthday";
 import Main from "@/components/Layouts/Main";
-import TableComponent from "@/components/molecules/Table";
-import ResultDetail from "@/components/molecules/ResultDetail";
-import { ArrowDropDown } from "@mui/icons-material";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Grid,
-} from "@mui/material";
-import Table2 from "@/components/molecules/Table2";
+// import TableComponent from "@/components/molecules/Table";
+// import ResultDetail from "@/components/molecules/ResultDetail";
+// import { ArrowDropDown } from "@mui/icons-material";
+// import {
+//   Accordion,
+//   AccordionDetails,
+//   AccordionSummary,
+//   Grid,
+// } from "@mui/material";
+// import Table2 from "@/components/molecules/Table2";
+import { useLocation } from "react-router-dom";
+import { getBirthTime, getCalendarType } from "@/utils/functions";
+import { Grid } from "@mui/material";
+import GridItem from "@/components/atoms/tableEls/GridItem";
+import ChineseLetter from "@/components/atoms/ChineseLetter";
 // function TabResult() {
 //   const [tab, setTab] = useState(0);
 //   const handleTab = useCallback((value: number) => {
@@ -20,10 +25,217 @@ import Table2 from "@/components/molecules/Table2";
 //   return <div></div>;
 // }
 export default function Result() {
+  const location = useLocation();
+  console.log("location: ", location);
+  if (!location.state) {
+    window.location.href = "/";
+  }
+  const { name, gender, birthDate, birthTime, calendarType, city } =
+    location.state;
+  console.log("states: ", location.state);
   return (
     <Main additionalClasses="flex flex-col p-0">
-      <div className="flex flex-row gap-2 p-4">
-        {/* profile */}
+      <h1 className="text-center text-lg">{name} (81세)</h1>
+      <Grid container direction={"row"} padding={0}>
+        <GridItem
+          gridProps={{
+            xs: 1,
+          }}
+        >
+          {gender === "male" ? "남자" : "여자"}
+        </GridItem>
+        <Grid container xs={5} item direction={"column"}>
+          <GridItem>
+            {getCalendarType(calendarType)}
+            {birthDate}
+          </GridItem>
+          <GridItem>
+            {getCalendarType(calendarType)}
+            {birthDate}
+          </GridItem>
+          <GridItem>
+            {getCalendarType(calendarType)}
+            {birthDate}
+          </GridItem>
+          <GridItem>
+            {getCalendarType(calendarType)}
+            {birthDate}
+          </GridItem>
+        </Grid>
+        <Grid container item direction={"column"} xs={2}>
+          <GridItem gridProps={{ xs: 6 }}>{getBirthTime(birthTime)}</GridItem>
+          <GridItem gridProps={{ xs: 3 }}>{getBirthTime(birthTime)}</GridItem>
+          <GridItem gridProps={{ xs: 3 }}>{getBirthTime(birthTime)}</GridItem>
+        </Grid>
+        <GridItem gridProps={{ xs: 2 }}>
+          {city} <br />
+          (-30분)
+        </GridItem>
+        <Grid container item xs={2} direction={"column"}>
+          <GridItem gridProps={{ xs: 6 }}>명조 비교</GridItem>
+          <GridItem gridProps={{ xs: 6 }}>신살보기</GridItem>
+        </Grid>
+      </Grid>
+      <Grid container direction={"row"}>
+        <Grid container item direction={"column"} xs={3}>
+          <GridItem addClasses="bg-grey text-dark">편관</GridItem>
+          <GridItem>
+            <ChineseLetter
+              bgColor="bg-blue"
+              addClasses="h-20 w-20 text-6xl"
+              padding="py-2"
+            >
+              庚
+            </ChineseLetter>
+          </GridItem>
+          <GridItem>
+            <ChineseLetter
+              bgColor={"bg-red"}
+              addClasses="h-20 w-20 text-6xl"
+              padding="py-2"
+            >
+              午
+            </ChineseLetter>
+          </GridItem>
+          <GridItem addClasses="bg-grey text-dark">상관</GridItem>
+        </Grid>
+        <Grid container item direction={"column"} xs={3}>
+          <GridItem addClasses="bg-grey text-dark">편관</GridItem>
+          <GridItem>
+            <ChineseLetter
+              bgColor="bg-yellow"
+              addClasses="h-20 w-20 text-6xl"
+              padding="py-2"
+            >
+              庚
+            </ChineseLetter>
+          </GridItem>
+          <GridItem>
+            <ChineseLetter addClasses="h-20 w-20 text-6xl" padding="py-2">
+              午
+            </ChineseLetter>
+          </GridItem>
+          <GridItem addClasses="bg-grey text-dark">상관</GridItem>
+        </Grid>
+        <Grid container item direction={"column"} xs={3}>
+          <GridItem addClasses="bg-grey text-dark">편관</GridItem>
+          <GridItem>
+            <ChineseLetter
+              bgColor="bg-blue"
+              addClasses="h-20 w-20 text-6xl"
+              padding="py-2"
+            >
+              庚
+            </ChineseLetter>
+          </GridItem>
+          <GridItem>
+            <ChineseLetter addClasses="h-20 w-20 text-6xl" padding="py-2">
+              午
+            </ChineseLetter>
+          </GridItem>
+          <GridItem addClasses="bg-grey text-dark">상관</GridItem>
+        </Grid>
+        <Grid container item direction={"column"} xs={3}>
+          <GridItem addClasses="bg-grey text-dark">편관</GridItem>
+          <GridItem>
+            <ChineseLetter addClasses="h-20 w-20 text-6xl" padding="py-2">
+              庚
+            </ChineseLetter>
+          </GridItem>
+          <GridItem>
+            <ChineseLetter addClasses="h-20 w-20 text-6xl" padding="py-2">
+              午
+            </ChineseLetter>
+          </GridItem>
+          <GridItem addClasses="bg-grey text-dark">상관</GridItem>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <GridItem gridProps={{ xs: true }} addClasses="bg-grey text-dark">
+          木（3）
+        </GridItem>
+        <GridItem gridProps={{ xs: true }} addClasses="bg-grey text-dark">
+          火（2）
+        </GridItem>
+        <GridItem gridProps={{ xs: true }} addClasses="bg-grey text-dark">
+          土（1）
+        </GridItem>
+        <GridItem gridProps={{ xs: true }} addClasses="bg-grey text-dark">
+          金（2）
+        </GridItem>
+        <GridItem gridProps={{ xs: true }} addClasses="bg-grey text-dark">
+          水（0）
+        </GridItem>
+      </Grid>
+      <Grid container>
+        <GridItem gridProps={{ xs: 3 }} addClasses="bg-grey text-dark">
+          丙己丁
+        </GridItem>
+        <GridItem gridProps={{ xs: 3 }} addClasses="bg-grey text-dark">
+          乙癸戊
+        </GridItem>
+        <GridItem gridProps={{ xs: 3 }} addClasses="bg-grey text-dark">
+          戊丙甲
+        </GridItem>
+        <GridItem gridProps={{ xs: 3 }} addClasses="bg-grey text-dark">
+          戊壬庚
+        </GridItem>
+      </Grid>
+      <div className="w-full overflow-x-auto">
+        <Grid container direction={"row"} wrap="nowrap">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => (
+            <Grid
+              container
+              item
+              direction={"column"}
+              width={"10%"}
+              minWidth={50}
+            >
+              <GridItem>98</GridItem>
+              <GridItem>
+                <ChineseLetter addClasses="w-10 h-10 text-3xl" padding="py-2">
+                  丙
+                </ChineseLetter>
+              </GridItem>
+              <GridItem>
+                <ChineseLetter addClasses="w-10 h-10 text-3xl" padding="py-2">
+                  子
+                </ChineseLetter>
+              </GridItem>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+      <div className="w-full overflow-x-auto">
+        <Grid container direction={"row"} wrap="nowrap">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(
+            () => (
+              <Grid container item direction={"column"} minWidth={50}>
+                <GridItem>98</GridItem>
+                <GridItem>
+                  <ChineseLetter addClasses="w-10 h-10 text-3xl" padding="py-2">
+                    丙
+                  </ChineseLetter>
+                </GridItem>
+                <GridItem>
+                  <ChineseLetter addClasses="w-10 h-10 text-3xl" padding="py-2">
+                    子
+                  </ChineseLetter>
+                </GridItem>
+              </Grid>
+            ),
+          )}
+        </Grid>
+      </div>
+      {/* <div className="flex flex-wrap gap-2 p-4">
+        <span>{name}</span>
+        <span>{gender === "male" ? "남자" : "여자"}</span>
+        <span>{birthDate}</span>
+        <span>{birthTime === "unknown" ? "(시간모름)" : birthTime}</span>
+        <span>{getCalendarType(calendarType)}</span>
+        <span>{city}</span>
+      </div> */}
+      {/* <div className="flex flex-row gap-2 p-4">
         <img
           src="/images/animal.png"
           alt="animal picture"
@@ -34,9 +246,8 @@ export default function Result() {
           <h2 className="text-2xl">이호준</h2>
           <h3>경신(하얀 원숭이)</h3>
         </div>
-      </div>
-      <div className="mb-4 flex flex-col gap-1 p-4 pt-0 text-xs">
-        {/* calendars */}
+      </div> */}
+      {/* <div className="mb-4 flex flex-col gap-1 p-4 pt-0 text-xs">
         <BirthDay
           disabled={true}
           color="red"
@@ -64,11 +275,11 @@ export default function Result() {
           city="서울 특별시"
           gender="남자"
         />
-      </div>
-      <div className="p-4 pl-0 text-xs">
+      </div> */}
+      {/* <div className="p-4 pl-0 text-xs">
         <TableComponent />
-      </div>
-      <div className="w-full">
+      </div> */}
+      {/* <div className="w-full">
         <Accordion className="p-0">
           <AccordionSummary
             style={{
@@ -91,9 +302,8 @@ export default function Result() {
             <ResultDetail />
           </AccordionDetails>
         </Accordion>
-      </div>
-      <div className="w-full">{/* <TabResult /> */}</div>
-      <div className="p-4">
+      </div> */}
+      {/* <div className="p-4">
         <div className="mb-6 mt-8">
           <h2 className="text-dark text-2xl font-bold">오행과 십성 분석</h2>
           <div>
@@ -101,7 +311,7 @@ export default function Result() {
               type="checkbox"
               name="option1"
               id="option1"
-              className="bg-dark color-dark w-4"
+              className="bg-grey color-dark w-4"
             />
             <label htmlFor="option1">합에 따른 오행 변화 적용</label>
           </div>
@@ -309,8 +519,8 @@ export default function Result() {
             </Grid>
           </Grid>
         </div>
-      </div>
-      <div className="p-4">
+      </div> */}
+      {/* <div className="p-4">
         <h2 className="text-dark text-2xl font-bold">나의 오행: 경금</h2>
         <div className="p-8">
           <svg
@@ -677,15 +887,15 @@ export default function Result() {
             ></path>
           </svg>
         </div>
-      </div>
-      <div className="p-4">
+      </div> */}
+      {/* <div className="p-4">
         <h2 className="text-dark text-2xl font-semibold">대운수 : 7(을묘)</h2>
         <p className="text-dark">좌우로 슬라이드해서 더 볼 수 있어요.</p>
         <Table2></Table2>
         <Table2></Table2>
         <Table2></Table2>
         <Table2></Table2>
-      </div>
+      </div> */}
     </Main>
   );
 }

@@ -6,9 +6,9 @@ export default function Main({
 }: React.PropsWithChildren<{ additionalClasses?: string }>) {
   return (
     <main
-      className={additionalClasses}
+      className={"bg-background " + additionalClasses}
       style={{
-        height: "calc(100vh - 56px)",
+        minHeight: "calc(100vh - 56px)",
       }}
     >
       {children}
